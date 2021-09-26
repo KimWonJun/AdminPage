@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;security-context.xml&apos; to &apos;spring&apos;&#x0D;&#x0A;- Original project: &apos;DemoSpringProject&apos;&#x0D;&#x0A;- Destination element: &apos;spring&apos;&#x0D;&#x0A;- Original element: &apos;security-context.xml&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" element1="security-context.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1632657736796" target="src/main/webapp/WEB-INF/spring" units="0" version="1.0"/>
+</session>

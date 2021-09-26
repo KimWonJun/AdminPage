@@ -2,7 +2,7 @@
 <%@ page session="false" contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
-	<script src="/resources/lib/jquery-3.6.0.min.js"></script>
+	<script src="/resources/plugins/jquery/jquery-3.6.0.min.js"></script>
 	<title>Home</title>
 	<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
 </head>
