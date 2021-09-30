@@ -1,6 +1,10 @@
 package com.study.dao;
 
-public class MemberDAO 
+import java.util.List;
+
+import com.study.vo.MemberVO;
+
+public interface MemberDAO 
 {
-	
+	public List<MemberVO> selectMember() throws Exception;
 }
