@@ -16,6 +16,8 @@ import com.study.myproject.HomeController;
 import com.study.service.MemberService;
 import com.study.vo.MemberVO;
 
+import net.sf.json.JSONArray;
+
 @Controller
 public class MemberController 
 {
@@ -30,6 +32,9 @@ public class MemberController
 		logger.info("member");
 		
 		List<MemberVO> memberList = service.selectMember();
+		
+		JSONArray result = JSONArray.fromObject(memberList);
+		System.out.println("jsonResult : " + result);
 		
 		model.addAttribute("memberList", memberList);
 		
