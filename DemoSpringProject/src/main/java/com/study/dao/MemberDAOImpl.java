@@ -28,8 +28,33 @@ public class MemberDAOImpl implements MemberDAO
 	{
 		logger.info("selectMember");
 		List<MemberVO> memberList = sqlSession.selectList(namespace + ".selectMember");
-		logger.info("list {}", memberList);
 		return memberList;
+	}
+
+	@Override
+	public int insertMember(MemberVO memberVO) throws Exception 
+	{
+		logger.info("insertMember");
+		int insertNumber = sqlSession.insert(namespace + ".insertMember");
+		return insertNumber;
+	}
+
+
+	@Override
+	public int updateMemberName(MemberVO memberVO) throws Exception 
+	{
+		logger.info("updateMemberName");
+		int updateNumber = sqlSession.update(namespace + ".updateMemberName");
+		return updateNumber;
+	}
+
+
+	@Override
+	public int deleteMember(String userId) throws Exception 
+	{
+		logger.info("deleteMember");
+		int deleteNumber = sqlSession.delete(namespace + ".deleteMember");
+		return deleteNumber;
 	}
 	
 }

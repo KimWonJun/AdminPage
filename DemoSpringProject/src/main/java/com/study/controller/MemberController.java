@@ -1,14 +1,16 @@
 package com.study.controller;
 
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,8 +28,8 @@ public class MemberController
 	@Inject
 	private MemberService service;
 	
-	@RequestMapping(value="getMemberList", method=RequestMethod.GET)
-	public String getMember(Locale locale, Model model) throws Exception
+	@RequestMapping(value="members/list", method=RequestMethod.GET)
+	public ResponseEntity<List<MemberVO>> getMember() throws Exception
 	{
 		logger.info("member");
 		
@@ -36,8 +38,27 @@ public class MemberController
 		JSONArray result = JSONArray.fromObject(memberList);
 		System.out.println("jsonResult : " + result);
 		
-		model.addAttribute("memberList", memberList);
+		HttpHeaders responseHeaders = new HttpHeaders(); 
+		responseHeaders.add("Content-Type", "application/json; charset=UTF-8");
 		
-		return "member";
+		return new ResponseEntity<>(memberList, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="members", method=RequestMethod.POST)
+	public ResponseEntity<Void> insertMember() throws Exception
+	{
+		return new ResponseEntity<Void>(HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value="members", method=RequestMethod.PUT)
+	public ResponseEntity<Void> updateMemberName() throws Exception
+	{
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="member/{userId}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> deleteMember(@PathVariable String userId) throws Exception
+	{
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 }

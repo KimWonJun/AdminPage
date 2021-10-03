@@ -1,0 +1,50 @@
+package com.study.controller;
+
+import java.util.List;
+import java.util.Locale;
+
+import javax.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.study.myproject.HomeController;
+import com.study.service.MemberService;
+import com.study.vo.MemberVO;
+
+import net.sf.json.JSONArray;
+
+@Controller
+public class MemberController 
+{
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	@Inject
+	private MemberService service;
+	
+	@RequestMapping(value="getMemberList", method=RequestMethod.GET)
+	public ResponseEntity getMember(Locale locale, Model model) throws Exception
+	{
+		logger.info("member");
+		
+		List<MemberVO> memberList = service.selectMember();
+		
+		JSONArray result = JSONArray.fromObject(memberList);
+		System.out.println("jsonResult : " + result);
+		
+		HttpHeaders responseHeaders = new HttpHeaders(); 
+		responseHeaders.add("Content-Type", "application/json; charset=UTF-8");
+
+		
+		model.addAttribute("memberList", memberList);
+		
+		return new ResponseEntity(result, responseHeaders, HttpStatus.OK);
+	}
+}

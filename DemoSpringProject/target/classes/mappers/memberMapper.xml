@@ -15,14 +15,38 @@
 	</select>
 	
 	<insert id="insertMember">
-	
+        INSERT INTO dev_con.member (
+               user_id
+            ,  user_pw
+            ,  user_name
+            ,  auth_level
+            ,  fst_reg_id
+            ,  fst_reg_date
+            ,  lst_upt_id
+            ,  lst_upt_date
+        )
+        VALUES (
+               #{userId}
+            ,  #{userPw}
+            ,  #{userName}
+            ,  #{authLevel}
+            ,  #{userId}
+            ,  sysdate()
+            ,  #{userId}
+            ,  sysdate()
+        )
 	</insert>
 	
-	<update id="updateMember">
-	
+	<update id="updateMemberName">
+        UPDATE dev_con.member
+	       SET user_name = #{userName}
+	         , lst_upt_id = #{userId}
+	         , lst_upt_date = sysdate()
+	     WHERE user_id = #{userId}
 	</update>
 	
 	<delete id="deleteMember">
-	
+        DELETE FROM dev_con.member
+         WHERE user_id = #{userId}
 	</delete>
 </mapper>
