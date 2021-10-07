@@ -1,0 +1,30 @@
+package com.study.myproject;
+
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.study.encrypt.Encrypt_SHA256;
+
+public class EncryptTest 
+{
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	private Encrypt_SHA256 encrypt;
+	
+	@Test
+	public void encryptTest()
+	{
+		String helloJava = "8a02f0ce1395252b16a296f285d7631f24cfb8e7112adde97f1fbfcc0c178498";
+		
+		String testEncrypt = encrypt.testSHA256("hello, Java");
+		if(helloJava.equals(testEncrypt))
+		{
+			logger.info("pwd encrypted!");
+		}
+		else
+		{
+			logger.info("encrypt fail");
+		}
+	}
+}

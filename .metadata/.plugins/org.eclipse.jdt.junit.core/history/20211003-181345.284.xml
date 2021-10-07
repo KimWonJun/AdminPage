@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="MyBatisTest" project="DemoSpringProject" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.study.myproject.MyBatisTest" time="0.159">
-    <testcase name="insertTest" classname="com.study.myproject.MyBatisTest" time="0.159"/>
-  </testsuite>
-</testrun>
