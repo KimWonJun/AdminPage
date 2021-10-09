@@ -4,7 +4,8 @@
 <configuration>
 	<settings>
 		<setting name="cacheEnabled" value="true" />
-		<setting name="mapUnderscoreToCamelCase" value="true" />
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
 		<setting name="logImpl" value="SLF4J" />
 	</settings>
 

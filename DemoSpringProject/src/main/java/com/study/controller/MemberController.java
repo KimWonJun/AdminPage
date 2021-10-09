@@ -11,9 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.study.encrypt.Encrypt;
 import com.study.myproject.HomeController;
 import com.study.service.MemberService;
 import com.study.vo.MemberVO;
@@ -28,7 +30,7 @@ public class MemberController
 	@Inject
 	private MemberService service;
 	
-	@RequestMapping(value="members/list", method=RequestMethod.GET)
+	@RequestMapping(value="/members/list", method=RequestMethod.GET)
 	public ResponseEntity<List<MemberVO>> getMember() throws Exception
 	{
 		logger.info("member");
@@ -44,9 +46,21 @@ public class MemberController
 		return new ResponseEntity<>(memberList, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="members", method=RequestMethod.POST)
-	public ResponseEntity<Void> insertMember() throws Exception
+	@RequestMapping(value="/members", method=RequestMethod.POST)
+	public ResponseEntity<Void> registerMember(@RequestBody MemberVO member) throws Exception
 	{
+		logger.info("add Member");
+		logger.info("id : {}", member.getUserId());
+		logger.info("pw : {}", member.getUserPw());
+		logger.info("name : {}", member.getUserName());
+		logger.info("authlevel : {}", member.getAuthLevel());
+		
+		Encrypt encrypt = new Encrypt();
+		String encryptedPwd = encrypt.encryptSHA256(member.getUserPw());
+		
+		member.setUserPw(encryptedPwd);
+		service.insertMember(member);		
+		
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	

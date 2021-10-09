@@ -35,7 +35,7 @@ public class MemberDAOImpl implements MemberDAO
 	public int insertMember(MemberVO memberVO) throws Exception 
 	{
 		logger.info("insertMember");
-		int insertNumber = sqlSession.insert(namespace + ".insertMember");
+		int insertNumber = sqlSession.insert(namespace + ".insertMember", memberVO);
 		return insertNumber;
 	}
 

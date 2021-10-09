@@ -5,4 +5,5 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpHeaders"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.PropertyNamingStrategy.SnakeCaseStrategy"/>
 </qualifiedTypeNameHistroy>
